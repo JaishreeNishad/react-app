@@ -1,5 +1,5 @@
 import "./App.css";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { FaArrowLeft } from "react-icons/fa";
 import { FaArrowRight } from "react-icons/fa";
 
@@ -33,6 +33,13 @@ function App() {
     setCurrentIndex(newIndex)
 
   };
+  useEffect(() => {
+    const interval = setInterval(() => {
+      handleRightClick();
+    }, 3000); // Change slide every 3 second
+
+    return () => clearInterval(interval);
+  }, [currentIndex]);
 
   return (
     <div className="max-w-[1400px] h-[780px] w-fullm-auto relative group ">
